@@ -1,85 +1,100 @@
 <?php
-
-//str_getcsv() --- perhaps implement.
-//use file_get_contents()
-
 #Function that reads contents of CSV-formatted file into a PHP array.
-echo "Function for reading CSV into a PHP Array:<br>";
-$csvArray = array();
-$file = fopen('data.csv', 'r');
-while ($line = fgetcsv($file)) {
-  $csvArray[] = $line;
+function returnFile() {
+	$csvArray = array();
+	$file = fopen('data.csv', 'r');
+	while ($line = fgetcsv($file)) {
+	  $csvArray[] = $line;
+	}
+	fclose($file);
 }
-print_r($csvArray);
-fclose($file);
-echo "<br>";
-echo "<br>";
-
 
 #Function that reads contents of CSV-formatted file and returns specified row.
-$row = 1;
-$counter = 0;
-$csvArray = array();
-$file = fopen('data.csv', 'r');
-while ($line = fgetcsv($file)) {
-  $csvArray[] = $line;
-	if ($counter == $row) { $returnRow = $line; }
-  $counter++;
+function returnRow($index) {
+	$counter = 0;
+	$csvArray = array();
+	$file = fopen('data.csv', 'r');
+	while ($line = fgetcsv($file)) {
+	  $csvArray[] = $line;
+		if ($counter == $index) { $returnRow = $line; }
+	  $counter++;
+	}
+	fclose($file);
+	return $returnRow;
 }
-print_r($returnRow);
-fclose($file);
-echo "<br>";
-echo "<br>";
-
 
 #Function for adding a new record in a CSV-formatted file
-echo "Function for adding a new line to a CSV file:<br>";
-$newData = array(999,'NEW',999,'NEW','NEW');
-$file = fopen('data.csv', 'a');
-fputcsv($file, $newData);
-fclose($file);
-echo "<br>";
-echo "<br>";
+function createRow($newData) {
+	$file = fopen('data.csv', 'a');
+	fputcsv($file, $newData);
+	fclose($file);
+}
 
 #Function for modifying the record on a specific row of a CSV-formatted file.
-echo "Function for adding a new line to a CSV file:<br>";
-$updatedData = array(000,'UPDATED',000,'UPDATED','UPDATED');
+function modifyRow($index, $updatedData) {
+	$csvArray = array();
+	$counter = 0;
+	$file = fopen('data.csv', 'r+');
+	while (($line = fgetcsv($file)) !== FALSE) {
+	  $csvArray[] = $line;
+	}
+	rewind($file);
+	foreach ($csvArray as $line) {
+		if ($counter == $index) {
+				fputcsv($file, $updatedData);
+		}
+		else {
+			fputcsv($file, $line);		
+		}
+		$counter++;
+	}
+	fclose($file);
+}
+
+#Function for deleting an entire line from the CSV file
+function deleteRow($index) {
+	$updatedData = array();
+	$csvArray = array();
+	$counter = 0;
+	$file = fopen('data.csv', 'r+');
+	while (($line = fgetcsv($file)) !== FALSE) {
+	  $csvArray[] = $line;
+	}
+	rewind($file);
+	foreach ($csvArray as $line) {
+		if ($counter == $index) {
+				$counter++;
+				continue;
+		}
+		else {
+			fputcsv($file, $line);		
+		}
+		$counter++;
+	}
+	fclose($file);
+}
+
+
+
+
+
+
+
+
+#Function for emptying the record on a specific line of a CSV-formatted file (leaves an empty line)
+echo "Function for emptying the stored values for a CSV line:<br>";
+$updatedData = array();
 $csvArray = array();
 $counter = 0;
-$row = 9;				//determines which line to update
-$file = fopen('data.csv', 'r');
-while (($line = fgetcsv($file)) !== FALSE) {
-  $csvArray[] = $line;
-}
-fclose($file);
-$file = fopen('data.csv', 'w');
-foreach ($csvArray as $line) {
-	if ($counter == $row) {
-			fputcsv($file, $updatedData);
-	}
-	else {
-		fputcsv($file, $line);		
-	}
-	$counter++;
-}
-print_r($csvArray);
-echo "<br>";
-echo "<br>";
-fclose($file);
-
-
-
-echo "Function for adding a new line to a CSV file:<br>";
-$updatedData = array(1,'UPDATED',2,'UPDATED','UPDATED');
-$csvArray = array();
-$counter = 0;
-$row = 10;				//determines which line to update
+$index = 3;				//determines which line to update
 $file = fopen('data.csv', 'r+');
 while (($line = fgetcsv($file)) !== FALSE) {
   $csvArray[] = $line;
 }
+print_r($csvArray);
+rewind($file);
 foreach ($csvArray as $line) {
-	if ($counter == $row) {
+	if ($counter == $index) {
 			fputcsv($file, $updatedData);
 	}
 	else {
@@ -87,29 +102,29 @@ foreach ($csvArray as $line) {
 	}
 	$counter++;
 }
+echo '<br>';
+echo '<br>';
+echo '<br>';
 print_r($csvArray);
-echo "<br>";
-echo "<br>";
 fclose($file);
+echo "<br>";
+echo "<br>";
 
 
-
-
-#Function for emptying the record on a specific line of a CSV-formatted file (removing the data, but not the entry altogether)
 /*echo "Function for emptying the stored values for a CSV line:<br>";
 $csvArray = array();
 $counter = 0;
-$row = 2;		//determines which line to nullify
-$file = fopen('data.csv', 'r');
+$index = 2;		//determines which line to nullify
+$file = fopen('data.csv', 'r+');
 while (($line = fgetcsv($file)) !== FALSE) {
   $csvArray[] = $line;
 }
-fclose($file);
-$file = fopen('data.csv', 'w');
+rewind($file);
 foreach ($csvArray as $line) {
-	if ($counter == $row) {
-		foreach ($line as $key => $value)
+	if ($counter == $index) {
+		foreach ($line as $key => $value) {
 			$line[$key] = "";
+		}
 	}
 	fputcsv($file, $line);		
 	$counter++;
@@ -120,30 +135,19 @@ echo "<br>";
 fclose($file);
 */
 
-#Function for deleting an entire line from the CSV file
-/*echo "Function for deleting an entire line from the CSV file:<br>";
-$csvArray = array();
-$counter = 0;
-$row = 5;		//determines which line to nullify
-$file = fopen('data.csv', 'r');
-while (($line = fgetcsv($file)) !== FALSE) {
-  $csvArray[] = $line;
-}
-fclose($file);
-$file = fopen('data.csv', 'w');
-foreach ($csvArray as $line) {
-	if ($counter == $row) {
-		$counter++;
-		continue;
-	}
-	fputcsv($file, $line);		
-	$counter++;
-}
-print_r($csvArray);
-echo "<br>";
-echo "<br>";
-fclose($file);
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -306,5 +310,76 @@ fputs($file,$updatedData);
 fclose($file);
 echo "<br>";
 echo "<br>";
+|||||||||||
+echo "Function for adding a new line to a CSV file:<br>";
+$updatedData = array(000,'UPDATED',000,'UPDATED','UPDATED');
+$csvArray = array();
+$counter = 0;
+$row = 9;				//determines which line to update
+$file = fopen('data.csv', 'r');
+while (($line = fgetcsv($file)) !== FALSE) {
+  $csvArray[] = $line;
+}
+fclose($file);
+$file = fopen('data.csv', 'w');
+foreach ($csvArray as $line) {
+	if ($counter == $row) {
+			fputcsv($file, $updatedData);
+	}
+	else {
+		fputcsv($file, $line);		
+	}
+	$counter++;
+}
+print_r($csvArray);
+echo "<br>";
+echo "<br>";
+fclose($file);
+||||||||||||
+echo "Function for emptying the stored values for a CSV line:<br>";
+$csvArray = array();
+$counter = 0;
+$row = 2;		//determines which line to nullify
+$file = fopen('data.csv', 'r');
+while (($line = fgetcsv($file)) !== FALSE) {
+  $csvArray[] = $line;
+}
+fclose($file);
+$file = fopen('data.csv', 'w');
+foreach ($csvArray as $line) {
+	if ($counter == $row) {
+		foreach ($line as $key => $value)
+			$line[$key] = "";
+	}
+	fputcsv($file, $line);		
+	$counter++;
+}
+print_r($csvArray);
+echo "<br>";
+echo "<br>";
+fclose($file);
+|||||||||
+echo "Function for deleting an entire line from the CSV file:<br>";
+$csvArray = array();
+$counter = 0;
+$row = 5;		//determines which line to nullify
+$file = fopen('data.csv', 'r');
+while (($line = fgetcsv($file)) !== FALSE) {
+  $csvArray[] = $line;
+}
+fclose($file);
+$file = fopen('data.csv', 'w');
+foreach ($csvArray as $line) {
+	if ($counter == $row) {
+		$counter++;
+		continue;
+	}
+	fputcsv($file, $line);		
+	$counter++;
+}
+print_r($csvArray);
+echo "<br>";
+echo "<br>";
+fclose($file);
 */
 ?>
