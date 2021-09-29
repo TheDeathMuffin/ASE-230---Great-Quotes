@@ -1,4 +1,8 @@
 <?php
+//place data file as parameter for functions.
+#clearRow and updateRow are currently not working.
+	//The issue only occurs when the line being input is shorter than the line that it is replacing.
+
 #Function that reads contents of CSV-formatted file into a PHP array.
 function returnFile() {
 	$csvArray = array();
@@ -74,15 +78,37 @@ function deleteRow($index) {
 	fclose($file);
 }
 
-
-
-
-
-
-
-
 #Function for emptying the record on a specific line of a CSV-formatted file (leaves an empty line)
-echo "Function for emptying the stored values for a CSV line:<br>";
+function clearRow($index, $updatedData) {
+	$csvArray = array();
+	$counter = 0;
+	$file = fopen('data.csv', 'r+');
+	while (($line = fgetcsv($file)) !== FALSE) {
+	  $csvArray[] = $line;
+	}
+	rewind($file);
+	foreach ($csvArray as $line) {
+		if ($counter == $index) {
+				fputcsv($file, $updatedData);
+		}
+		else {
+			fputcsv($file, $line);		
+		}
+		$counter++;
+	}
+	fclose($file);
+}
+
+$DataArray = array(11,'12',112);
+clearRow(2, $DataArray);
+
+
+
+
+
+
+#The OLD work-in-progress clearRow functions:
+/*echo "Function for emptying the stored values for a CSV line:<br>";
 $updatedData = array();
 $csvArray = array();
 $counter = 0;
@@ -109,9 +135,8 @@ print_r($csvArray);
 fclose($file);
 echo "<br>";
 echo "<br>";
-
-
-/*echo "Function for emptying the stored values for a CSV line:<br>";
+|||||||||||||||
+echo "Function for emptying the stored values for a CSV line:<br>";
 $csvArray = array();
 $counter = 0;
 $index = 2;		//determines which line to nullify
