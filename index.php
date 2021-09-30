@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="eng">
 <?php
-
+require('csv_util.php');
 function readCSV($csvFile){
 	$newData = $_POST;
 	$csvArray = array();
@@ -20,13 +20,9 @@ function readCSV($csvFile){
 	  $authorName = "";
 	  for ($x = 0; $x < count(readCSV('quotes.csv')); $x++){ ?>
 		<?php
-			foreach($authors as $author){
-				if($author[1] == readCSV('quotes.csv')[$x][1]){
-					$authorName = $author[0];
-				}
-			}
+		$authorElement = readCSV('quotes.csv')[$x][1];
 		?>
-		<h2><?= readCSV('quotes.csv')[$x][0]." -".$authorName;?></h2><br />
+		<h2><?= readCSV('quotes.csv')[$x][0]." -".returnRow($authorElement)[0]." ".returnRow($authorElement)[1];?></h2><br />
 	<?php } ?>
 </body>
 </html>

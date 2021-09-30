@@ -13,7 +13,7 @@ function returnFile() {
 function returnRow($index) {
 	$counter = 0;
 	$csvArray = array();
-	$file = fopen('data.csv', 'r');
+	$file = fopen('authors.csv', 'r');
 	while ($line = fgetcsv($file)) {
 	  $csvArray[] = $line;
 		if ($counter == $index) { $returnRow = $line; }

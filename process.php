@@ -8,7 +8,7 @@ function readCSV($csvFile){
 	while (($line = fgetcsv($handle)) !== FALSE) {
 		$csvArray[] = $line;
 	}
-	
+	foreach ($csvArray as $element)
 	fclose($handle);
 }
 function createQuote($csvFile){
@@ -26,7 +26,7 @@ function createQuote($csvFile){
 	$newData = $_POST;
 	$csvArray[] = $newData;
 	fclose($handle);
-	fclose($authorHandle);
+	fclose($authorHandle)
 	$handle = fopen($csvFile, 'w');
 	foreach ($csvArray as $line) {
 		fputcsv($handle, $line);
