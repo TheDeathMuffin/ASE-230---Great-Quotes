@@ -1,6 +1,7 @@
 <?php
 
 #This page is supposed to have the function that appends information to the csv file. 
+require("csv_util.php");
 function readCSV($csvFile){
 	$newData = $_POST;
 	$csvArray = array();
@@ -8,35 +9,26 @@ function readCSV($csvFile){
 	while (($line = fgetcsv($handle)) !== FALSE) {
 		$csvArray[] = $line;
 	}
-	foreach ($csvArray as $element)
+	return $csvArray;
 	fclose($handle);
 }
-function createQuote($csvFile){
+function combineFormData(){
 	
-	$csvArray = array();
-	$handle = fopen($csvFile, 'r');
-	while (($line = fgetcsv($handle)) !== FALSE) {
-		$csvArray[] = $line;
+	$quote = $_POST['quote'];
+	$authors = returnFile('authors.csv');
+	$authorElement = 0;
+	$newData = [];
+	print_r($authors);
+	for($x = 0; $x < count($authors); $x++){
+		if ($authors[$x][0] == $_POST['author']){
+			$authorElement = $x;
+		}
 	}
-	$authorHandle = fopen($"authors.csv", 'r');
-	$authorArray = array();
-	while (($line = fgetcsv($authorHandle)) !== FALSE) {
-		$authorArray[] = $line;
-	}
-	$newData = $_POST;
-	$csvArray[] = $newData;
-	fclose($handle);
-	fclose($authorHandle)
-	$handle = fopen($csvFile, 'w');
-	foreach ($csvArray as $line) {
-		fputcsv($handle, $line);
-	}
-	print_r($newData);
-	echo "<br>";
-	echo "<br>";
-	fclose($handle);
+	$newData[] = $quote;
+	$newData[] = $authorElement;
+	return $newData;
 }
-createQuote("quotes.csv");
+createRow(combineFormData());
 /*
 function addQuote($quote, $file){
 	//if(!$_P)

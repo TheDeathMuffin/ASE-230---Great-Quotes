@@ -4,12 +4,13 @@
 	//The issue only occurs when the line being input is shorter than the line that it is replacing.
 
 #Function that reads contents of CSV-formatted file into a PHP array.
-function returnFile() {
+function returnFile($csvFile) {
 	$csvArray = array();
-	$file = fopen('data.csv', 'r');
+	$file = fopen($csvFile, 'r');
 	while ($line = fgetcsv($file)) {
 	  $csvArray[] = $line;
 	}
+	return $csvArray;
 	fclose($file);
 }
 
@@ -29,7 +30,7 @@ function returnRow($index) {
 
 #Function for adding a new record in a CSV-formatted file
 function createRow($newData) {
-	$file = fopen('data.csv', 'a');
+	$file = fopen('quotes.csv', 'a');
 	fputcsv($file, $newData);
 	fclose($file);
 }
