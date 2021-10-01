@@ -39,7 +39,7 @@ function createRow($newData) {
 function modifyRow($index, $updatedData) {
 	$csvArray = array();
 	$counter = 0;
-	$file = fopen('data.csv', 'r+');
+	$file = fopen('quotes.csv', 'r+');
 	while (($line = fgetcsv($file)) !== FALSE) {
 	  $csvArray[] = $line;
 	}

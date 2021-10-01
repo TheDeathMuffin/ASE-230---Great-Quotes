@@ -21,8 +21,9 @@ function readCSV($csvFile){
 	  for ($x = 0; $x < count(readCSV('quotes.csv')); $x++){ ?>
 		<?php
 		$authorElement = readCSV('quotes.csv')[$x][1];
+		$quoteIndex = $x;
 		?>
-		<h2><a href="detail.php?author=<?= returnRow($authorElement)[0]."_".returnRow($authorElement)[1] ?>"><?= "\"".readCSV('quotes.csv')[$x][0]."\" -".returnRow($authorElement)[0]." ".returnRow($authorElement)[1];?></a></h2><br />
+		<h2><a href="detail.php?quoteIndex=<?= $quoteIndex?>&author=<?= returnRow($authorElement)[0]."_".returnRow($authorElement)[1] ?>"><?= "\"".readCSV('quotes.csv')[$x][0]."\" -".returnRow($authorElement)[0]." ".returnRow($authorElement)[1];?></a></h2><br />
 	<?php } ?>
 	
 	<h2><a href="create.php">Create</a></h2>

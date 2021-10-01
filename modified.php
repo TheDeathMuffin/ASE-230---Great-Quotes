@@ -1,7 +1,7 @@
 <?php
 
-#This page is supposed to have the function that appends information to the csv file. 
-require("csv_util.php");
+require('csv_util.php');
+
 function combineFormData(){
 	
 	$quote = $_POST['quote'];
@@ -9,6 +9,7 @@ function combineFormData(){
 	$authorElement = 0;
 	$newData = [];
 	print_r($authors);
+	//loop to find the index for a specific author's name
 	for($x = 0; $x < count($authors); $x++){
 		if ($authors[$x][0] == $_POST['author']){
 			$authorElement = $x;
@@ -18,12 +19,6 @@ function combineFormData(){
 	$newData[] = $authorElement;
 	return $newData;
 }
-createRow(combineFormData());
-/*
-function addQuote($quote, $file){
-	//if(!$_P)
-}
-var_dump($_POST);
-*/
-//echo $_POST['quote']." ".$_POST['author'];
+
+modifyRow($_GET['quoteIndex'], combineFormData());
 ?>
