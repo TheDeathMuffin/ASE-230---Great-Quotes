@@ -22,7 +22,7 @@ function readCSV($csvFile){
 		<?php
 		$authorElement = readCSV('quotes.csv')[$x][1];
 		?>
-		<h2><?= "\"".readCSV('quotes.csv')[$x][0]."\" -".returnRow($authorElement)[0]." ".returnRow($authorElement)[1];?></h2><br />
+		<h2><a href="detail.php?author=<?= returnRow($authorElement)[0]."_".returnRow($authorElement)[1] ?>"><?= "\"".readCSV('quotes.csv')[$x][0]."\" -".returnRow($authorElement)[0]." ".returnRow($authorElement)[1];?></a></h2><br />
 	<?php } ?>
 	
 	<h2><a href="create.php">Create</a></h2>
