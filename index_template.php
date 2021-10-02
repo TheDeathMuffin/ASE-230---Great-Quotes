@@ -19,6 +19,7 @@
 		<div class="lg" style="height: 5px;"></div>
 		<!--Body-->
 		<div class="" style="height: 0 auto; min-height: 200px; margin-bottom: 30px; padding: 30px;">
+	</body>
 	
 		
 		
