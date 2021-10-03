@@ -19,8 +19,9 @@ function combineFormData(){
 	$newData[] = $authorElement;
 	return $newData;
 }
+$newData = combineFormData();
 
-modifyRow($_GET['quoteIndex'], combineFormData());
+modifyRow($_GET['quoteIndex'], $newData);
 ?>
 <!DOCTYPE HTML>
 <html lang="eng">

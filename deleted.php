@@ -4,7 +4,7 @@
 
 require('csv_util.php');
 
-deleteRow($_GET['quoteIndex']);
+deleteRow($_GET['quoteIndex'], 'quotes.csv');
 ?>
 <body>
 	<h1>Quote has been Deleted</h2>

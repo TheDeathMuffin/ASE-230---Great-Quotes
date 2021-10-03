@@ -35,8 +35,8 @@ function createRow($newData) {
 	fclose($file);
 }
 
-#Function for modifying the record on a specific row of a CSV-formatted file.
-function modifyRow($index, $updatedData) {
+#(Broken)Function for modifying the record on a specific row of a CSV-formatted file.
+function modifyRowBroken($index, $updatedData) {
 	$csvArray = array();
 	$counter = 0;
 	$file = fopen('quotes.csv', 'r+');
@@ -56,8 +56,57 @@ function modifyRow($index, $updatedData) {
 	fclose($file);
 }
 
-#Function for deleting an entire line from the CSV file
-function deleteRow($index) {
+#(Testing)Function for modifying the record on a specific row of a CSV-formatted file.
+function modifyRow($index, $updatedData) {
+	$csvArray = array();
+	$x = 0;
+	$handle = fopen('quotes.csv', 'r');
+	while (!feof($handle)) {
+	  $line = fgetcsv($handle,1000,",");
+	  //conditional checks if the current line is empty
+	  if($line == "")
+		  break;
+	  $csvArray[] = $line;
+	}
+	fclose($handle);
+	//Conditional statement used to modify data in csvArray
+	if($index == 0){
+		array_splice($csvArray[$index], 0, count($csvArray[$index]), $updatedData);
+	} else {
+		array_splice($csvArray[$index], 0, count($csvArray[$index]), $updatedData);
+	}
+	print_r($csvArray);
+	$handle2 = fopen('quotes.csv', 'w');
+	for($i = 0; $i < count($csvArray); $i++){
+		fputcsv($handle2, $csvArray[$i]);
+	}
+	fclose($handle2);
+}
+
+#(Works Properly)Function for deleting an entire line from the CSV file
+function deleteRow($index, $csvFile) {
+	$updatedData = array();
+	$csvArray = array();
+	$x = 0;
+	$handle = fopen($csvFile, 'r');
+	while (!feof($handle)) {
+	  $line = fgetcsv($handle,1000,",");
+	  //conditional checks if the current line is empty
+	  if($line == "")
+		  break;
+	  $csvArray[] = $line;
+	}
+	fclose($handle);
+	$handle2 = fopen($csvFile, 'w');
+	array_splice($csvArray, $index, $index+1);
+	for($i = 0; $i < count($csvArray); $i++){
+		fputcsv($handle2, $csvArray[$i]);
+	}
+	fclose($handle2);
+}
+
+#(Doesn't Work)Function for deleting an entire line from the CSV file
+function deleteRowBroken($index) {
 	$updatedData = array();
 	$csvArray = array();
 	$counter = 0;
