@@ -98,7 +98,12 @@ function deleteRow($index, $csvFile) {
 	}
 	fclose($handle);
 	$handle2 = fopen($csvFile, 'w');
-	array_splice($csvArray, $index, $index+1);
+	if($index == 0){
+		array_splice($csvArray, $index, $index+1);
+	} else {
+		array_splice($csvArray, $index, $index);
+	}
+	
 	for($i = 0; $i < count($csvArray); $i++){
 		fputcsv($handle2, $csvArray[$i]);
 	}
