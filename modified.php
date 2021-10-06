@@ -1,7 +1,6 @@
 
 <?php
-
-require('csv_util.php');
+require("csv_util.php");
 
 function combineFormData(){
 	
@@ -27,5 +26,6 @@ modifyRow($_GET['quoteIndex'], $newData);
 <html lang="eng">
 <body>
 	<h3><a href="detail.php?quoteIndex=<?= $_GET['quoteIndex'];?>">Detail page</a></h3>
+	<h3><a href="index.php?">Back to Home</a></h3>
 </body>
 </html>

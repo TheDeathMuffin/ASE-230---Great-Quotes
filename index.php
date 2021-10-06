@@ -13,6 +13,7 @@ function readCSV($csvFile){
 	fclose($handle);
 	return $csvArray;
 }
+
 ?>
 <head>
 		<title>Great Quotes</title>
