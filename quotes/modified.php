@@ -5,7 +5,7 @@
 		function combineFormData()
 		{
 			$quote = $_POST['quote'];
-			$authors = returnFile('authors.csv');
+			$authors = returnFile('../authors/authors.csv');
 			$authorElement = 0;
 			$newData = [];
 			//loop to find the index for a specific author's name
@@ -27,7 +27,7 @@
 		<title>Great Quotes - Quote Modified</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../style.css">
 	</head>
 	<body>
 		<!--Body Container-->
