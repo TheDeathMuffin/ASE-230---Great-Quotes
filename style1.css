@@ -1,0 +1,16 @@
+html {height: 100%;}
+body {height: 100%; background-color: #efeeb4; font-family: Arial, sans-serif;}
+
+.textColumn {min-height: 100%; background-color: #e0df89; min-height: 200px; padding: 200px; padding-top: 40px; padding-bottom: 50px; margin-left: 200px; margin-right: 200px;}
+.singleQuote {padding-top: 50px; padding-bottom: 60px; color: #309975;}
+.createForm {padding-top: 30px; padding-bottom: 60px; color: #309975; font-size: 20px;}
+
+.b {background-color: #e0df89;}
+.textb {color: #e0df89;}
+.lb {background-color: #309975;}
+.textlb {color: #309975;}
+.lg {background-color: #ee9b00;}
+.textlightgrey {color: #ee9b00;}
+.otb {color: #309975; font-size: 20px;}
+.butDiv {background-color: #309975; padding-top: 10px; padding-bottom: 10px; text-align: center;}
+.but {color: #e0df89; font-size: 25px;}
