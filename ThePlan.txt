@@ -1,0 +1,7 @@
+deletion:
+
+remove author
+foreach quote - if index = delAuthor - remove quote.
+				- if index of != delAuthor && > delAuthor   - index is subtracted 
+				
+				

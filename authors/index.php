@@ -21,7 +21,7 @@
 				<p class="textlb" style="font-size: 100px;">Authors</p>
 				<?php $authors = returnFile('authors.csv');
 					for ($x = 0; $x < count(returnFile('authors.csv')); $x++){ ?>
-						<p><a class="otb" href="detail.php?authorIndex=<?= $x?>"><?= "".$authors[$x][0]." ".$authors[$x][1];?></a></p><br />
+						<p><a class="otb" href="detail.php?Index=<?= $x?>"><?= "".$authors[$x][0]." ".$authors[$x][1];?></a></p><br />
 				<?php } ?>
 				<!--Buttons Row-->
 				<div class="row" style="padding-top: 30px;">
