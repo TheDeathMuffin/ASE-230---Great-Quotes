@@ -1,20 +1,14 @@
-html {height: 100%;}
-body {height: 100%; background-color: #faedcd; font-family: Arial, sans-serif;}
+body {}
+html {}
 
-.textColumn {min-height: 100%; background-color: #e9d8a6; min-height: 200px; padding: 200px; padding-top: 40px; padding-bottom: 50px; margin-left: 200px; margin-right: 200px;}
-.singleQuote {padding-top: 50px; padding-bottom: 60px; color: #bb3e03;}
-.createForm {padding-top: 30px; padding-bottom: 60px; color: #bb3e03; font-size: 20px;}
 
-	.b {background-color: #e9d8a6;}
-	.textb {color: #e9d8a6;}
-	.lb {background-color: #bb3e03;}
-	.textlb {color: #bb3e03;}
+.b {background-color: #353566;}
+.textb {color: #353566;}
+.lb {background-color: #4bcfed;}
+.textlb {color: #4bcfed;}
 .textg {color: #a40000;}
 .dg {background-color: #494954}
 .w {background-color: #dddddd;}
 .textw {color: #dddddd;}
-	.lg {background-color: #ee9b00;}
-	.textlightgrey {color: #ee9b00;}
-	.otb {color: #bb3e03; font-size: 20px;}
-	.butDiv {background-color: #bb3e03; padding-top: 10px; padding-bottom: 10px; text-align: center;}
-	.but {color: #e9d8a6; font-size: 25px;}
+.lg {background-color: #9c9c9c;}
+.textlightgrey {color: #9c9c9c;}
