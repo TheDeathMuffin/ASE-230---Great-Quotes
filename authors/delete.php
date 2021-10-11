@@ -18,9 +18,9 @@
 			<div class="lg" style="height: 5px;"></div>
 			<!--Quote Column-->
 			<div class="textColumn" style="min-height: 100%;">
-				<p class="textlb" style="font-size: 100px;">Delete Quote</p>
-				<form class="createForm" action="deleted.php?quoteIndex=<?= $_GET['quoteIndex'] ?>" method="POST">
-					<h1 style="margin-bottom: -20px;">Are you sure you want to delete this quote?</h1>
+				<p class="textlb" style="font-size: 100px;">Delete Author</p>
+				<form class="createForm" action="deleted.php?authorIndex=<?= $_GET['Index'] ?>" method="POST">
+					<h1 style="margin-bottom: -20px;">Are you sure you want to delete this Author?</h1>
 					<!--Buttons Row-->
 					<div class="row" style="padding-top: 70px;">
 						<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><input class="but lb" style="border: 0px;" type="submit" value="Delete"></div></div>

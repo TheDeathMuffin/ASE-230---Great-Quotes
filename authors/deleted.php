@@ -2,7 +2,17 @@
 <html lang="eng">
 	<?php
 		require("../csv_util.php");
-		deleteRow($_GET['quoteIndex'], 'quotes.csv');
+		function deleteAuthor($authorIndex){
+			deleteRow($authorIndex, 'authors.csv');
+			$counter = 0;
+			$quotes = returnFile('..\quotes\quotes.csv');
+			foreach($quotes as $quote){
+				$quotes[$counter][1] = $quote[1] - 1;
+				$counter++;
+			}
+			print_r($quotes);
+		}
+		deleteAuthor($_GET['authorIndex']);
 	?>
 	<head>
 		<title>Great Quotes - Quote Deleted</title>
@@ -19,7 +29,7 @@
 			<div class="lg" style="height: 5px;"></div>
 			<!--Quote Column-->
 			<div class="textColumn" style="min-height: 100%;">
-				<p class="textlb" style="font-size: 100px;">Quote Deleted!</p>
+				<p class="textlb" style="font-size: 100px;">Author Deleted!</p>
 				<!--Buttons Row-->
 				<div class="row" style="padding-top: 30px;">
 					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="index.php">Home</a></div></div>
