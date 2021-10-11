@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="eng">
 	<?php
-		require('csv_util.php');
+		require('../csv_util.php');
 		function combineFormData()
 		{
 			$quote = $_POST['quote'];
@@ -21,7 +21,7 @@
 			return $newData;
 		}
 		$newData = combineFormData();
-		modifyRow($_GET['quoteIndex'], $newData);
+		modifyRow($_GET['quoteIndex'], $newData, '../quotes/quotes.csv');
 	?>
 	<head>
 		<title>Great Quotes - Quote Modified</title>

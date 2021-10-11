@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="eng">
 	<?php
-		require('csv_util.php');
+		require('../csv_util.php');
 		$authorIndex = returnFile('quotes.csv')[$_GET['quoteIndex']][1];
 		$firstName = returnRow($authorIndex)[0];
 		$lastName = returnRow($authorIndex)[1];

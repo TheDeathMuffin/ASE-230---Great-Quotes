@@ -1,19 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="eng">
 	<?php
-		require('csv_util.php');
-		function readCSV($csvFile)
-		{
-			$newData = $_POST;
-			$csvArray = array();
-			$handle = fopen($csvFile, 'r');
-			while (($line = fgetcsv($handle)) !== FALSE) 
-			{
-				$csvArray[] = $line;
-			}
-			fclose($handle);
-			return $csvArray;
-		}
+		require('../csv_util.php');
 	?>
 	<head>
 		<title>Great Quotes - Home</title>
@@ -31,14 +19,14 @@
 			<!--Quote Column-->
 			<div class="textColumn" style="min-height: 100%;">
 				<p class="textlb" style="font-size: 100px;">Great Quotes</p>
-				<?php $authors = readCSV('../authors/authors.csv');
+				<?php $authors = returnFile('/authors/authors.csv');
 					$authorName = "";
-					for ($x = 0; $x < count(readCSV('quotes.csv')); $x++){ ?>
+					for ($x = 0; $x < count(returnFile('quotes.csv')); $x++){ ?>
 						<?php
-						$authorElement = readCSV('quotes.csv')[$x][1];
+						$authorElement = returnFile('quotes.csv')[$x][1];
 						$quoteIndex = $x;
 						?>
-						<p><a class="otb" href="detail.php?quoteIndex=<?= $quoteIndex?>"><?= "\"".readCSV('quotes.csv')[$x][0]."\"<br>~".returnRow($authorElement)[0]." ".returnRow($authorElement)[1];?></a></p><br />
+						<p><a class="otb" href="detail.php?quoteIndex=<?= $quoteIndex?>"><?= "\"".returnFile('quotes.csv')[$x][0]."\"<br>~".returnRow($authorElement)[0]." ".returnRow($authorElement)[1];?></a></p><br />
 				<?php } ?>
 				<!--Buttons Row-->
 				<div class="row" style="padding-top: 30px;">

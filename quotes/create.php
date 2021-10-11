@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="eng">
 	<?php
-		require('csv_util.php');
+		require('../csv_util.php');
 	?>
 	<head>
 		<title>Great Quotes - Create</title>
@@ -26,7 +26,7 @@
 					<select name="author" id="authors"><br/><br/>
 					<option value="none" Selected>None</option>
 					<?php
-						$authors = returnFile('../authors/authors.csv');
+						$authors = returnFile('/authors/authors.csv');
 						foreach($authors as $author){ ?>
 							<option value="<?= $author[0] ?>"><?= $author[0]." ".$author[1]; ?></option>
 					<?php	} ?>
