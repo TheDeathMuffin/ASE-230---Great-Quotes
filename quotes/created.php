@@ -5,7 +5,7 @@
 		function combineFormData()
 		{
 			$quote = $_POST['quote'];
-			$authors = returnFile('/authors/authors.csv');
+			$authors = returnFile('..\authors\authors.csv');
 			$authorElement = 0;
 			$newData = [];
 			for($x = 0; $x < count($authors); $x++)

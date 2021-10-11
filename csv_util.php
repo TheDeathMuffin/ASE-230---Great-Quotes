@@ -4,7 +4,7 @@
 #ALL WORKING FUNCTIONS
 
 #Function that reads contents of CSV-formatted file into a PHP array.
-function returnFile($csvFile) {
+function returnFile($csvFile = "../authors/authors.csv") {
 	$csvArray = array();
 	$file = fopen($csvFile, 'r');
 	while ($line = fgetcsv($file)) {
@@ -29,14 +29,14 @@ function returnRow($index, $csvFile = "../authors/authors.csv") {
 }
 
 #Function for adding a new record in a CSV-formatted file
-function createRow($newData, $csvFile = '/quotes/quotes.csv') {
+function createRow($newData, $csvFile = '../quotes/quotes.csv') {
 	$file = fopen($csvFile, 'a');
 	fputcsv($file, $newData);
 	fclose($file);
 }
 
 #(Works)Function for modifying the record on a specific row of a CSV-formatted file.
-function modifyRow($index, $updatedData, $csvFile = '/quotes/quotes.csv') {
+function modifyRow($index, $updatedData, $csvFile = '../quotes/quotes.csv') {
 	$csvArray = array();
 	$x = 0;
 	$handle = fopen($csvFile, 'r');
@@ -90,7 +90,7 @@ function deleteRow($index, $csvFile) {
 }
 
 #Function for emptying record on a specific Line of a CSV-Formatted File (Leaves an empty line)
-function clearRow($index, $csvFile = '/quotes/quotes.csv'){
+function clearRow($index, $csvFile = '../quotes/quotes.csv'){
 	$handle = fopen($csvFile, 'r+');
 	$temp = fopen('temp.csv', 'w+');
 	$counter = 0;
@@ -117,7 +117,7 @@ function clearRow($index, $csvFile = '/quotes/quotes.csv'){
 function modifyRowBroken($index, $updatedData) {
 	$csvArray = array();
 	$counter = 0;
-	$file = fopen('/quotes/quotes.csv', 'r+');
+	$file = fopen('../quotes/quotes.csv', 'r+');
 	while (($line = fgetcsv($file)) !== FALSE) {
 	  $csvArray[] = $line;
 	}
@@ -139,7 +139,7 @@ function deleteRowBroken($index) {
 	$updatedData = array();
 	$csvArray = array();
 	$counter = 0;
-	$file = fopen('/quotes/quotes.csv', 'r+');
+	$file = fopen('../quotes/quotes.csv', 'r+');
 	while (($line = fgetcsv($file)) !== FALSE) {
 	  $csvArray[] = $line;
 	}
@@ -161,7 +161,7 @@ function deleteRowBroken($index) {
 function outdatedClearRow($index) {
 	$csvArray = array();
 	$counter = 0;
-	$handle = fopen('/quotes/quotes.csv', 'r+');
+	$handle = fopen('../quotes/quotes.csv', 'r+');
 	while (($line = fgets($handle)) !== FALSE) {
 	  $csvArray[] = $line;
 	}
@@ -172,7 +172,7 @@ function outdatedClearRow($index) {
 		}
 		$counter++;
 	}
-	$handle = fopen('/quotes/quotes.csv', 'w+');
+	$handle = fopen('../quotes/quotes.csv', 'w+');
 	foreach ($csvArray as $line){
 		fputs($handle, $line);
 	}

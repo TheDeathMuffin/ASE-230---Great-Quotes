@@ -19,7 +19,7 @@
 			<!--Quote Column-->
 			<div class="textColumn" style="min-height: 100%;">
 				<p class="textlb" style="font-size: 100px;">Great Quotes</p>
-				<?php $authors = returnFile('/authors/authors.csv');
+				<?php $authors = returnFile('..\authors\authors.csv');
 					$authorName = "";
 					for ($x = 0; $x < count(returnFile('quotes.csv')); $x++){ ?>
 						<?php

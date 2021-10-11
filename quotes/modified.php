@@ -5,7 +5,7 @@
 		function combineFormData()
 		{
 			$quote = $_POST['quote'];
-			$authors = returnFile('../authors/authors.csv');
+			$authors = returnFile('..\authors\authors.csv');
 			$authorElement = 0;
 			$newData = [];
 			//loop to find the index for a specific author's name
