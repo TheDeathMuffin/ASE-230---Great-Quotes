@@ -13,7 +13,12 @@
 		<!--Body Container-->
 		<div style="height: 100%;">
 			<!--Top Bar-->
-			<div class="lb" style="height: 60px;"></div>
+			<div class="lb" style="height: 60px;">
+				<div class="butDivTwo" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="..\quotes\index.php">Switch to Authors</a></div>
+				<?php if(isset($_SESSION)) { ?>	
+				<div class="butDivTwo" style="width: 300px; height: 60px; background-color: red; float: left;"><a class="butTwo" href="..\signout.php">Sign Out</a></div>
+				<?php } ?>
+			</div>
 			<!--Small Top Bar-->
 			<div class="lg" style="height: 5px;"></div>
 			<!--Quote Column-->
@@ -24,7 +29,7 @@
 						<p><a class="otb" href="detail.php?Index=<?= $x?>"><?= "".$authors[$x][0]." ".$authors[$x][1];?></a></p><br />
 				<?php } ?>
 				<!--Buttons Row-->
-				<div class="row" style="padding-top: 30px;">
+				<div class="row" style="padding-top: 30px;">	
 					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="create.php">Create</a></div></div>
 				</div>
 			</div>

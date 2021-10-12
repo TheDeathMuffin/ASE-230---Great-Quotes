@@ -21,7 +21,12 @@
 		<!--Body Container-->
 		<div style="height: 100%;">
 			<!--Top Bar-->
-			<div class="lb" style="height: 60px;"></div>
+			<div class="lb" style="height: 60px;">
+				<div class="butDivTwo" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="..\quotes\index.php">Switch to Authors</a></div>
+				<?php if(isset($_SESSION)) { ?>	
+				<div class="butDivTwo" style="width: 300px; height: 60px; background-color: red; float: left;"><a class="butTwo" href="..\signout.php">Sign Out</a></div>
+				<?php } ?>
+			</div>
 			<!--Small Top Bar-->
 			<div class="lg" style="height: 5px;"></div>
 			<!--Quote Column-->

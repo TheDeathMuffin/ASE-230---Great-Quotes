@@ -16,7 +16,9 @@
 		<!--Body Container-->
 		<div style="height: 100%;">
 			<!--Top Bar-->
-			<div class="lb" style="height: 60px;"></div>
+			<div class="lb" style="">
+				<div class=""><div class="butDivTwo" style="width: 300px; height: 60px;"><a class="butTwo" href="..\authors\index.php">Switch to Authors</a></div></div>
+			</div>
 			<!--Small Top Bar-->
 			<div class="lg" style="height: 5px;"></div>
 			<!--Quote Column-->
