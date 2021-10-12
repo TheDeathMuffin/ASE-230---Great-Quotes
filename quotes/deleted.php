@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="eng">
 	<?php
-		require("csv_util.php");
+		require("../csv_util.php");
 		deleteRow($_GET['quoteIndex'], 'quotes.csv');
 	?>
 	<head>

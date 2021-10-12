@@ -62,32 +62,26 @@ function modifyRow($index, $updatedData, $csvFile = '../quotes/quotes.csv') {
 	fclose($handle2);
 }
 
-#(Works Properly)Function for deleting an entire line from the CSV file
-function deleteRow($index, $csvFile) {
-	$updatedData = array();
-	$csvArray = array();
-	$x = 0;
-	$handle = fopen($csvFile, 'r');
-	while (!feof($handle)) {
-	  $line = fgetcsv($handle,1000,",");
-	  //conditional checks if the current line is empty
-	  if($line == "")
-		  break;
-	  $csvArray[] = $line;
+#(Working)Function for deleting an entire line from the CSV file
+function deleteRow($index, $csvFile = '../quotes/quotes.csv'){
+	$handle = fopen($csvFile, 'r+');
+	$temp = fopen('temp.csv', 'w+');
+	$counter = 0;
+	while (!feof($handle)){
+		$line = fgets($handle);
+		if($counter == $index){
+			fputs($temp, "");
+		} else {
+			fputs($temp, $line);
+		}	
+		$counter++;
 	}
 	fclose($handle);
-	$handle2 = fopen($csvFile, 'w');
-	if($index == 0){
-		array_splice($csvArray, $index, $index+1);
-	} else {
-		array_splice($csvArray, $index, $index);
-	}
-	
-	for($i = 0; $i < count($csvArray); $i++){
-		fputcsv($handle2, $csvArray[$i]);
-	}
-	fclose($handle2);
+	fclose($temp);
+	rename('temp.csv',$csvFile);
 }
+
+
 
 #Function for emptying record on a specific Line of a CSV-Formatted File (Leaves an empty line)
 function clearRow($index, $csvFile = '../quotes/quotes.csv'){
@@ -132,6 +126,33 @@ function modifyRowBroken($index, $updatedData) {
 		$counter++;
 	}
 	fclose($file);
+}
+
+#(Works only for quotes.csv)Function for deleting an entire line from the CSV file
+function slightlyBrokenDeleteRow($index, $csvFile) {
+	$updatedData = array();
+	$csvArray = array();
+	$x = 0;
+	$handle = fopen($csvFile, 'r');
+	while (!feof($handle)) {
+	  $line = fgetcsv($handle,1000,",");
+	  //conditional checks if the current line is empty
+	  if($line == "")
+		  break;
+	  $csvArray[] = $line;
+	}
+	fclose($handle);
+	$handle2 = fopen($csvFile, 'w');
+	if($index == 0){
+		array_splice($csvArray, $index, $index+1);
+	} else {
+		array_splice($csvArray, $index, $index);
+	}
+	
+	for($i = 0; $i < count($csvArray); $i++){
+		fputcsv($handle2, $csvArray[$i]);
+	}
+	fclose($handle2);
 }
 
 #(Doesn't Work)Function for deleting an entire line from the CSV file
