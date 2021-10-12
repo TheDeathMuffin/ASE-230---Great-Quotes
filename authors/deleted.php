@@ -5,6 +5,7 @@
 		function deleteAuthor($authorIndex){
 			deleteRow($authorIndex, 'authors.csv');
 			$counter = 0;
+			$updatedData = array();
 			$quotes = returnFile('..\quotes\quotes.csv');
 			foreach($quotes as $quote){
 				$quotes[$counter][1] = $quote[1] - 1;
