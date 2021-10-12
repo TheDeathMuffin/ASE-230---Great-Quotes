@@ -4,7 +4,7 @@
 		require('../csv_util.php');
 		$newData[] = $_POST['newAuthorFirst'];
 		$newData[] = $_POST['newAuthorLast'];
-		modifyRow($_GET['authorIndex'], $newData, 'authors.csv');
+		modifyRow($_GET['Index'], $newData, 'authors.csv');
 	?>
 	<head>
 		<title>Great Quotes - Quote Modified</title>
@@ -24,7 +24,7 @@
 				<p class="textlb" style="font-size: 100px;">Quote Modified!</p>
 				<!--Buttons Row-->
 				<div class="row" style="padding-top: 30px;">
-					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="detail.php?Index=<?= $_GET['authorIndex'];?>">View Quote</a></div></div>
+					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="detail.php?Index=<?= $_GET['Index'];?>">View Quote</a></div></div>
 					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="index.php">Home</a></div></div>
 				</div>
 			</div>
