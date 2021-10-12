@@ -23,20 +23,12 @@
 			<div class="textColumn" style="min-height: 100%;">
 				<p class="textlb" style="font-size: 100px;"><?= "".$firstName." ".$lastName?></p>
 				<h1 class="textlb">Quotes:</h1><br>
-				
-				
-
-				
 				<?php $quotes = returnFile('..\quotes\quotes.csv');
 					for ($x = 0; $x < count(returnFile('..\quotes\quotes.csv')); $x++){
 						if ($quotes[$x][1] == $_GET['Index']) {
 						?>
 						<h2><a class="singleQuote" href="..\quotes\detail.php?quoteIndex=<?= $x?>"><?= "\"".$quotes[$x][0]."\"";?></a></h2><br/>
 				<?php }} ?>
-
-
-
-
 				<!--Buttons Row-->
 				<div class="row" style="padding-top: 30px;">
 					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="index.php">Home</a></div></div>
