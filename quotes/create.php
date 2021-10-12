@@ -27,9 +27,10 @@
 					<option value="none" Selected>None</option>
 					<?php
 						$authors = returnFile('..\authors\authors.csv');
+						$i = 0;
 						foreach($authors as $author){ ?>
-							<option value="<?= $author[0] ?>"><?= $author[0]." ".$author[1]; ?></option>
-					<?php	} ?>
+							<option value="<?= $i ?>"><?= $author[0]." ".$author[1]; ?></option>
+					<?php	$i++; } ?>
 					</select><br/>
 					<!--Buttons Row-->
 					<div class="row" style="padding-top: 70px;">

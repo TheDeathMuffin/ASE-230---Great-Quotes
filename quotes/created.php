@@ -6,15 +6,8 @@
 		{
 			$quote = $_POST['quote'];
 			$authors = returnFile('..\authors\authors.csv');
-			$authorElement = 0;
+			$authorElement = $_POST['author'];
 			$newData = [];
-			for($x = 0; $x < count($authors); $x++)
-			{
-				if ($authors[$x][0] == $_POST['author'])
-				{
-					$authorElement = $x;
-				}
-			}
 			$newData[] = $quote;
 			$newData[] = $authorElement;
 			return $newData;

@@ -20,18 +20,27 @@
 			<div class="textColumn" style="min-height: 100%;">
 				<p class="textlb" style="font-size: 100px;">Great Quotes</p>
 				<?php $authors = returnFile('..\authors\authors.csv');
+					if (0 >= count($authors)) 
+					{ ?>
+						<h1 class="textlb">There are no authors!</h1>
+						<div class="row" style="padding-top: 30px;">
+							<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="..\authors\index.php">Create Author</a></div></div>
+						</div>
+					<?php }
+					else
+					{
 					$authorName = "";
-					for ($x = 0; $x < count(returnFile('quotes.csv')); $x++){ ?>
-						<?php
+					for ($x = 0; $x < count(returnFile('quotes.csv')); $x++){
 						$authorElement = returnFile('quotes.csv')[$x][1];
 						$quoteIndex = $x;
 						?>
-						<p><a class="otb" href="detail.php?quoteIndex=<?= $quoteIndex?>"><?= "\"".returnFile('quotes.csv')[$x][0]."\"<br>~".returnRow($authorElement)[0]." ".returnRow($authorElement)[1];?></a></p><br />
-				<?php } ?>
+						<p><a class="otb" href="detail.php?quoteIndex=<?= $quoteIndex?>"><?= "\"".returnFile('quotes.csv')[$x][0]."\" ~".returnRow($authorElement)[0]." ".returnRow($authorElement)[1];?></a></p><br />
+					<?php } ?>
+					
 				<!--Buttons Row-->
 				<div class="row" style="padding-top: 30px;">
 					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="create.php">Create</a></div></div>
-				</div>
+				</div> <?php } ?>
 			</div>
 			<!--Small Footer Bar-->
 			<div class="lg" style="height: 5px;"></div>
