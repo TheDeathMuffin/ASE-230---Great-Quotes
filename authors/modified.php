@@ -17,9 +17,12 @@
 		<div style="height: 100%;">
 			<!--Top Bar-->
 			<div class="lb" style="height: 60px;">
-				<div class="butDivTwo" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="..\quotes\index.php">Switch to Authors</a></div>
+				<div class="butDivTwo" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="..\quotes\index.php">Switch to Quotes</a></div>
 				<?php if(isset($_SESSION)) { ?>	
-				<div class="butDivTwo" style="width: 300px; height: 60px; background-color: red; float: left;"><a class="butTwo" href="..\signout.php">Sign Out</a></div>
+				<div class="butDivTwo" style="width: 300px; height: 60px; float: left; background-color: red;"><a class="butTwo" href="..\signout.php">Sign Out</a></div>
+				<?php } ?>
+				<?php if(!isset($_SESSION)) { ?>	
+				<div class="butDivThree" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="..\signin.php">Sign In</a></div>
 				<?php } ?>
 			</div>
 			<!--Small Top Bar-->
