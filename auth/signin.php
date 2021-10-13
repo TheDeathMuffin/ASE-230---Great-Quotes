@@ -1,10 +1,10 @@
 <?php
-session_start();
+//session_start();
 // if the user is alreay signed in, redirect them to the members_page.php page
 
 // use the following guidelines to create the function in auth.php
 //instead of using "die", return a message that can be printed in the HTML page
-if(count($_POST)>0){
+//if(count($_POST)>0){
 	// 1. check if email and password have been submitted
 	// 2. check if the email is well formatted
 	// 3. check if the password is well formatted
@@ -23,13 +23,14 @@ if(count($_POST)>0){
 		
 	}else $_SESSION['logged']=false;
 	*/
-}
+//}
 
 // improve the form
 ?>
 <form method="POST">
-	<input type="email" name="email" />
-	<input type="password" name="password" />
-	
+	Email:
+	<input type="email" name="email" /> <br /><br />
+	Password:
+	<input type="password" name="password" /><br /><br />
 	<input type="submit" value="submit" />
 </form>
