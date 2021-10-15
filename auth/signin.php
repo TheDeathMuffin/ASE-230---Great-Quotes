@@ -75,5 +75,8 @@ if(count($_POST)>0){
     Password
 	<input type="password" name="password" /><br/>
 	
-	<input type="submit" value="submit" />
+	<input type="submit" value="submit" /><br />
+    <a href="signup.php">Create an Account</a><br />
+	<a href="..\quotes\index.php">Quotes</a><br />
+	<a href="..\authors\index.php">Authors</a><br />
 </form>

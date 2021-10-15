@@ -85,5 +85,8 @@ if(count($_POST)>0){
 	Confirm Password:
 	<input type="password" name="confirm_password" required="true"/><br />
 	
-	<input type="submit" value="submit" />
+	<input type="submit" value="submit" /> <br />
+	<a href="signin.php">Sign in</a><br />
+	<a href="..\quotes\index.php">Quotes</a><br />
+	<a href="..\authors\index.php">Authors</a><br />
 </form>
