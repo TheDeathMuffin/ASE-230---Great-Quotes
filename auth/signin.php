@@ -34,7 +34,6 @@ if(count($_POST)>0){
             fclose($handle);
             // 6. check if the file containing users exists
             if(file_exists('users.csv')){
-
                 // 7. check if the email is registered
                 $h = fopen('users.csv', 'r+');
                 while(!feof($h)){
