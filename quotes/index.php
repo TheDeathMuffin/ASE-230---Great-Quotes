@@ -46,9 +46,10 @@
 					<?php } ?>
 					
 				<!--Buttons Row-->
+				<?php if(isset($_SESSION['logged']) && isset($_SESSION['logged_user'])){ ?>
 				<div class="row" style="padding-top: 30px;">
 					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="create.php">Create</a></div></div>
-				</div> <?php } ?>
+				</div> <?php }} ?>
 			</div>
 			<!--Small Footer Bar-->
 			<div class="lg" style="height: 5px;"></div>

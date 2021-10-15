@@ -1,10 +1,10 @@
 <?php
-
 session_start();
+/*
 if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])){
 	header('location:../auth/signup.php');
 }
-
+*/
 ?>
 <!DOCTYPE HTML>
 <html lang="eng">
@@ -23,10 +23,10 @@ if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])){
 			<!--Top Bar-->
 			<div class="lb" style="height: 60px;">
 				<div class="butDivTwo" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="..\quotes\index.php">Switch to Quotes</a></div>
-				<?php if(isset($_SESSION)) { ?>	
+				<?php if(isset($_SESSION['logged']) && isset($_SESSION['logged_user'])) { ?>	
 				<div class="butDivTwo" style="width: 300px; height: 60px; float: left; background-color: red;"><a class="butTwo" href="..\signout.php">Sign Out</a></div>
 				<?php } ?>
-				<?php if(!isset($_SESSION)) { ?>	
+				<?php if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])) { ?>	
 				<div class="butDivThree" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="..\signin.php">Sign In</a></div>
 				<?php } ?>
 			</div>
@@ -40,9 +40,11 @@ if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])){
 						<p><a class="otb" href="detail.php?Index=<?= $x?>"><?= "".$authors[$x][0]." ".$authors[$x][1];?></a></p><br />
 				<?php } ?>
 				<!--Buttons Row-->
+				<?php if(isset($_SESSION['logged']) && isset($_SESSION['logged_user'])){ ?>
 				<div class="row" style="padding-top: 30px;">	
 					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="create.php">Create</a></div></div>
 				</div>
+				<?php } ?>
 			</div>
 			<!--Small Footer Bar-->
 			<div class="lg" style="height: 5px;"></div>

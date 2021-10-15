@@ -34,8 +34,10 @@
 				<!--Buttons Row-->
 				<div class="row" style="padding-top: 30px;">
 					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="index.php">Home</a></div></div>
+					<?php if(isset($_SESSION['logged']) && isset($_SESSION['logged_user'])){ ?>
 					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="modify.php?quoteIndex=<?= $_GET['quoteIndex']; ?>">Modify</a></div></div>
 					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="delete.php?quoteIndex=<?= $_GET['quoteIndex']; ?>">Delete</a></div></div>
+					<?php } ?>
 				</div>
 			</div>
 			<!--Small Footer Bar-->

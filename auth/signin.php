@@ -40,9 +40,9 @@ if(count($_POST)>0){
                 $h = fopen('users.csv', 'r+');
                 while(!feof($h)){
                     $line = fgets($h);
-                    $data = explode(';', $line);
+                    $data = explode(',', $line);
                     $data[1] = trim($data[1]);
-                    var_dump($data);
+                    print_r($data);
                     // 8. check if the password is correct
                     if($email == $data[0]){
                             if(password_verify($password, $data[1])){
@@ -50,7 +50,7 @@ if(count($_POST)>0){
                                 // 9. store session information
                                 $_SESSION['logged_user']=$email;
                                 $_SESSION['logged']=true;
-                                header('location: members.php');
+                                header('location:../authors/index.php');
                                 // 10. redirect the user to the members_page.php page
                                 die();
                             } else {
@@ -62,11 +62,7 @@ if(count($_POST)>0){
                 fclose($h);
                 echo 'The email is not registered, please signup';
             }
-        }
-
-
-
-	
+}
 	/*
 	echo 'check email+password';
 	if(true){
@@ -74,7 +70,6 @@ if(count($_POST)>0){
 		
 	}else $_SESSION['logged']=false;
 	*/
-}
 
 // improve the form
 ?>
