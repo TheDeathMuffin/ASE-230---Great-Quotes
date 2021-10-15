@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])){
+	header('location:../auth/signup.php');
+}
+
+?>
 <!DOCTYPE HTML>
 <html lang="eng">
 	<?php

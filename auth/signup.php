@@ -17,8 +17,11 @@ if(count($_POST)>0){
 	//checks if information has been entered for password
 	} else if(!isset($_POST['password'][0])){
 		echo "FAILED: Please enter your password";
+	//checks for atleast 2 special characters in the password
+	} else if(!preg_match('/([A-Za-z0-9]*[^A-Za-z0-9]+){2,}[A-Za-z0-9]*/', $_POST['password'])){
+		echo "FAILED: Please include at least 2 or more special characters in your password";
 	//checks if password meets character requirement
-	} else if(strlen($_POST['password']) < 8){
+	}else if(strlen($_POST['password']) < 8){
 		echo "FAILED: Your password must be atleast 8 characters";
 	//checks if password has been confirmed accurately
 	} else if($_POST['password'] != $_POST['confirm_password']){
@@ -54,19 +57,19 @@ if(count($_POST)>0){
 			echo "Password:". $_POST['password'];
 			$newRow = array();
 			$newRow[] = $_POST['email'];
-			$newRow[] = $_POST['password'];
+			$newRow[] = password_hash($_POST['password'], PASSWORD_BCRYPT);
 			print_r($newRow);
 			createRow($newRow, 'users.csv');
 		}
 		
 	}
 	#*NOTE: ADD ALL THESE AUTHENTICATION REQUIREMENTS
-	// check if the password contains at least 2 special characters**
+	// check if the password contains at least 2 special characters
 	// check if the file containing banned users exists
 	// check if the email has not been banned
 	// check if the file containing users exists
 	// check if the email is in the database already
-	// encrypt password**
+	// encrypt password
 	// save the user in the database 
 	// show them a success message and redirect them to the sign in page
 
@@ -81,7 +84,7 @@ if(count($_POST)>0){
 	Email:
 	<input type="email" name="email" required="true" /> <br /><br />
 	Password:
-	<input type="password" name="password" required="true"/><br /><br />
+	<input type="password" name="password" required="true"/><br />Password must have at least 2 special characters and at least 8 characters<br /><br />
 	Confirm Password:
 	<input type="password" name="confirm_password" required="true"/><br />
 	

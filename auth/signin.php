@@ -1,7 +1,9 @@
 <?php
 session_start();
 // if the user is already signed in, redirect them to the members_page.php page
-
+if(isset($_SESSION['logged']) && isset($_SESSION['logged_user'])){
+    header('location:../quotes/index.php');
+}
 // use the following guidelines to create the function in auth.php
 //instead of using "die", return a message that can be printed in the HTML page
 if(count($_POST)>0){
@@ -39,15 +41,22 @@ if(count($_POST)>0){
                 while(!feof($h)){
                     $line = fgets($h);
                     $data = explode(';', $line);
+                    $data[1] = trim($data[1]);
                     var_dump($data);
                     // 8. check if the password is correct
-                    if($data[0]==$email && $data[1]==$password){
-                        echo 'valid email and password';
-                        // 9. store session information
-                        $_SESSION['logged_user']=$email;
-                        header('location: members.php');
-                        // 10. redirect the user to the members_page.php page
-                        die();
+                    if($email == $data[0]){
+                            if(password_verify($password, $data[1])){
+                                echo 'valid email and password';
+                                // 9. store session information
+                                $_SESSION['logged_user']=$email;
+                                $_SESSION['logged']=true;
+                                header('location: members.php');
+                                // 10. redirect the user to the members_page.php page
+                                die();
+                            } else {
+                                break;
+                            }
+                        }
                     }
                 }
                 fclose($h);
