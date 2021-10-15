@@ -60,7 +60,7 @@ if(count($_POST)>0){
 			$newRow[] = password_hash($_POST['password'], PASSWORD_BCRYPT);
 			createRow($newRow, 'users.csv');
 			session_start();
-			$_SESSION['logged_user']=$email;
+			$_SESSION['logged_user']=$_POST['email'];
             $_SESSION['logged']=true;
             header('location:../authors/index.php');
 		}
