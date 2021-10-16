@@ -29,7 +29,7 @@ session_start();
 		<div style="height: 100%;">
 			<!--Top Bar-->
 			<div class="lb" style="height: 60px;">
-				<div class="butDivTwo" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="..\quotes\index.php">Switch to Quotes</a></div>
+				<div class="butDivTwo" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="..\authors\index.php">Switch to Authors</a></div>
 				<!--Will display sign out button if user is logged in-->
 				<?php if(isset($_SESSION['logged']) && isset($_SESSION['logged_user'])) { ?>	
 				<div class="butDivTwo" style="width: 300px; height: 60px; float: left; background-color: red;"><a class="butTwo" href="../auth/signout.php">Sign Out</a></div>
