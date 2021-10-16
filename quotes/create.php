@@ -43,6 +43,7 @@ if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])){
 					<select name="author" id="authors"><br/><br/>
 					<option value="none" Selected>None</option>
 					<?php
+					//
 						$authors = returnFile('..\authors\authors.csv');
 						$i = 0;
 						foreach($authors as $author){ ?>

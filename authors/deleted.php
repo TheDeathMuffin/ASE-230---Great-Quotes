@@ -5,11 +5,13 @@ session_start();
 <html lang="eng">
 	<?php
 		require("../csv_util.php");
+		//function used to delete author
 		function deleteAuthor($Index) 
 		{
 			deleteRow($Index, 'authors.csv');
 			$quotes = returnFile('..\quotes\quotes.csv');
 			$quoteExists = false;
+			//loops through quotes
 			foreach($quotes as $quote)
 			{
 				if ($quote[1] == $Index)
@@ -36,23 +38,6 @@ session_start();
 				}
 			}
 		}
-		
-		
-		
-		#function deleteAuthor($authorIndex){
-		#	deleteRow($authorIndex, 'authors.csv');
-		#	$counter = 0;
-		#	$updatedData = array();
-		#	$quotes = returnFile('..\quotes\quotes.csv');
-		#	foreach($quotes as $quote){
-		#		$quotes[$counter][1] = $quote[1] - 1;
-		#		$counter++;
-		#	}
-		#	print_r($quotes);
-		#}
-
-
-
 		deleteAuthor($_GET['Index']);
 	?>
 	<head>

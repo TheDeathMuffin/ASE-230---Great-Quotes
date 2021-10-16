@@ -37,6 +37,7 @@ session_start();
 			<div class="textColumn" style="min-height: 100%;">
 				<p class="textlb" style="font-size: 100px;"><?= "".$firstName." ".$lastName?></p>
 				<h1 class="textlb">Quotes:</h1><br>
+				<!--For loop used to print quotes by an author-->
 				<?php $quotes = returnFile('..\quotes\quotes.csv');
 					for ($x = 0; $x < count(returnFile('..\quotes\quotes.csv')); $x++){
 						if ($quotes[$x][1] == $_GET['Index']) {

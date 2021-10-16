@@ -34,9 +34,10 @@ if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])){
 			</div>
 			<!--Small Top Bar-->
 			<div class="lg" style="height: 5px;"></div>
-			<!--Quote Column-->
+			<!--Authors Column-->
 			<div class="textColumn" style="min-height: 100%;">
 				<p class="textlb" style="font-size: 100px;">Authors</p>
+				<!--Prints out all authors-->
 				<?php $authors = returnFile('authors.csv');
 					for ($x = 0; $x < count(returnFile('authors.csv')); $x++){ ?>
 						<p><a class="otb" href="detail.php?Index=<?= $x?>"><?= "".$authors[$x][0]." ".$authors[$x][1];?></a></p><br />

@@ -4,6 +4,7 @@ session_start();
 <!DOCTYPE HTML>
 <html lang="eng">
 	<?php
+	//code used to modify the data in a row
 		require('../csv_util.php');
 		$newData[] = $_POST['newAuthorFirst'];
 		$newData[] = $_POST['newAuthorLast'];

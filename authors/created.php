@@ -5,6 +5,7 @@ session_start();
 <html lang="eng">
 	<?php
 		require("../csv_util.php");
+		//Block of code that adds a new authors data to authors.csv
 		function combineFormData()
 		{
 			$newData = [];
