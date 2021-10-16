@@ -9,6 +9,7 @@ session_start();
 		$authors = returnFile('authors.csv');
 		$firstName = $authors[$_GET['Index']][0];
 		$lastName = $authors[$_GET['Index']][1];
+		$image = $authors[$_GET['Index']][2];
 	?>
 	<head>
 		<title>Great Authors - <?="".$firstName." ".$lastName?></title>
@@ -36,6 +37,8 @@ session_start();
 			<!--Quote Column-->
 			<div class="textColumn" style="min-height: 100%;">
 				<p class="textlb" style="font-size: 100px;"><?= "".$firstName." ".$lastName?></p>
+				<!--Profile Image-->
+				<div style="width: 300px; height: 300px; background-color: grey;"><img style="width: 300px; height: 300px;" src="<?= $image?>" alt="200x200"></div><br><br>
 				<h1 class="textlb">Quotes:</h1><br>
 				<!--For loop used to print quotes by an author-->
 				<?php $quotes = returnFile('..\quotes\quotes.csv');
