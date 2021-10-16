@@ -1,3 +1,21 @@
+<!DOCTYPE HTML>
+<html lang="eng">
+    <head>
+		<title>Sign In</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+		<link rel="stylesheet" href="../style.css">
+	</head>
+	<body>
+		<!--Body Container-->
+		<div style="height: 100%;">
+			<!--Top Bar-->
+			<div class="lb" style="height: 60px;"></div>
+			<!--Small Top Bar-->
+			<div class="lg" style="height: 5px;"></div>
+            <!--Quote Column-->
+			<div class="textColumn" style="min-height: 100%;">
+                <p class="textlb" style="font-size: 100px;">Sign In</p>
 <?php
 session_start();
 //if the user is already signed in, redirect them to the members_page.php page
@@ -61,24 +79,25 @@ if(count($_POST)>0){
                 echo 'The email is not registered, please signup';
             }
 }
-	/*
-	echo 'check email+password';
-	if(true){
-		$_SESSION['logged']=true;
-		
-	}else $_SESSION['logged']=false;
-	*/
-
-// improve the form
 ?>
-<form method="POST">
-    Email
-	<input type="email" name="email" /><br />
-    Password
-	<input type="password" name="password" /><br/>
-	
-	<input type="submit" value="submit" /><br />
-    <a href="signup.php">Create an Account</a><br />
-	<a href="..\quotes\index.php">Quotes</a><br />
-	<a href="..\authors\index.php">Authors</a><br />
-</form>
+                <form class="createForm" method="POST">
+                    <h2 style="margin-bottom: -10px;">Email</h2><br/>
+                    <input style="margin-bottom: 15px;" type="email" name="email" /><br />
+                    <h2 style="margin-bottom: -10px;">Password</h2><br/>
+                    <input type="password" name="password" /><br/>
+                    <!--Buttons Row-->
+                    <div class="row" style="padding-top: 30px;">
+                        <div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><input class="but lb" style="border: 0px;" type="submit" value="Sign In"></div></div>
+                        <div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="..\authors\index.php">Cancel</a></div></div>
+                    </div>
+                        <br><br><h2 style="margin-bottom: -10px;">Do you not have an account?</h2><br/>
+                        <div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="signup.php">Create an Account</a></div></div>
+                </form>
+            </div>
+            <!--Small Footer Bar-->
+            <div class="lg" style="height: 5px;"></div>
+			<!--Footer Bar-->
+			<div class="lb" style="height: 30px;"></div>
+        </div>
+    </body>
+</html>
