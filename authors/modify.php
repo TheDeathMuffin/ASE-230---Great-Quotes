@@ -1,4 +1,5 @@
 <?php
+//Makes sure user is authorized to view this webpage
 session_start();
 if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])){
 	header('location:../auth/not_registered.php');
@@ -22,10 +23,12 @@ if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])){
 			<!--Top Bar-->
 			<div class="lb" style="height: 60px;">
 				<div class="butDivTwo" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="..\quotes\index.php">Switch to Quotes</a></div>
+				<!--Will display sign out button if user is logged in-->
 				<?php if(isset($_SESSION['logged']) && isset($_SESSION['logged_user'])) { ?>	
 				<div class="butDivTwo" style="width: 300px; height: 60px; float: left; background-color: red;"><a class="butTwo" href="../auth/signout.php">Sign Out</a></div>
 				<?php } ?>
 				<?php if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])) { ?>	
+				<!--Will display sign in button if user isn't logged in-->
 				<div class="butDivThree" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="../auth/signin.php">Sign In</a></div>
 				<?php } ?>
 			</div>

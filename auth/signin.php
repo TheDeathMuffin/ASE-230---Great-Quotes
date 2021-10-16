@@ -18,22 +18,20 @@
                 <p class="textlb" style="font-size: 100px;">Sign In</p>
 <?php
 session_start();
-// if the user is already signed in, redirect them to the members_page.php page
+//if the user is already signed in, redirect them to the members_page.php page
 if(isset($_SESSION['logged']) && isset($_SESSION['logged_user'])){
     header('location:../quotes/index.php');
 }
-// use the following guidelines to create the function in auth.php
-//instead of using "die", return a message that can be printed in the HTML page
+//use the following guidelines to create the function in auth.php
 if(count($_POST)>0){
 	// 1. check if email and password have been submitted
-
     if(!isset($_POST['email'][0]) || !isset($_POST['password'][0])){
         echo 'All fields are required';
         die();
     }
     $email = $_POST['email'];
     $password = $_POST['password'];
-
+    //checks if email is a valid email
     if(!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($password)<8){
         echo 'Please provide a valid email address and password';
         die();

@@ -23,18 +23,21 @@ if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])){
 			<!--Top Bar-->
 			<div class="lb" style="height: 60px;">
 				<div class="butDivTwo" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="..\quotes\index.php">Switch to Quotes</a></div>
+				<!--Will display sign out button if user is logged in-->
 				<?php if(isset($_SESSION['logged']) && isset($_SESSION['logged_user'])) { ?>	
 				<div class="butDivTwo" style="width: 300px; height: 60px; float: left; background-color: red;"><a class="butTwo" href="../auth/signout.php">Sign Out</a></div>
 				<?php } ?>
 				<?php if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])) { ?>	
+				<!--Will display sign in button if user isn't logged in-->
 				<div class="butDivThree" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="../auth/signin.php">Sign In</a></div>
 				<?php } ?>
 			</div>
 			<!--Small Top Bar-->
 			<div class="lg" style="height: 5px;"></div>
-			<!--Quote Column-->
+			<!--Authors Column-->
 			<div class="textColumn" style="min-height: 100%;">
 				<p class="textlb" style="font-size: 100px;">Authors</p>
+				<!--Prints out all authors-->
 				<?php $authors = returnFile('authors.csv');
 					for ($x = 0; $x < count(returnFile('authors.csv')); $x++){ ?>
 						<p><a class="otb" href="detail.php?Index=<?= $x?>"><?= "".$authors[$x][0]." ".$authors[$x][1];?></a></p><br />
