@@ -17,7 +17,7 @@ if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])){
 		<link rel="stylesheet" href="../style1.css">
 	</head>
 	<body>
-		<!--Body Container-->-
+		<!--Body Container-->
 		<div style="height: 100%;">
 			<!--Top Bar-->
 			<div class="lb" style="height: 60px;">
@@ -39,6 +39,8 @@ if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])){
 					<textarea name="newAuthorFirst" rows="1" cols="25" required></textarea><br/><br/>
 					<h2 style="margin-bottom: -10px;">Last Name</h2><br/>
 					<textarea name="newAuthorLast" rows="1" cols="25" required></textarea><br/><br/>					
+					<h2 style="margin-bottom: -10px;">Profile Image (URL)</h2><br/>
+					<textarea name="image" rows="2" cols="25" required></textarea><br/><br/>
 					<!--Buttons Row-->
 					<div class="row" style="padding-top: 70px;">
 						<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><input class="but lb" style="border: 0px;" type="submit" value="Modify"></div></div>

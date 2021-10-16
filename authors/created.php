@@ -10,6 +10,7 @@ session_start();
 			$newData = [];
 			$newData[] = $_POST['fname'];
 			$newData[] = $_POST['lname'];
+			$newData[] = $_POST['image'];
 			return $newData;
 		}
 		createRow(combineFormData(), 'authors.csv');

@@ -7,6 +7,7 @@ session_start();
 		require('../csv_util.php');
 		$newData[] = $_POST['newAuthorFirst'];
 		$newData[] = $_POST['newAuthorLast'];
+		$newData[] = $_POST['image'];
 		modifyRow($_GET['Index'], $newData, 'authors.csv');
 	?>
 	<head>

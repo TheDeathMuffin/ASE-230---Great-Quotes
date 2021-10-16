@@ -38,6 +38,8 @@ if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])){
 					<textarea name="fname" rows="1" cols="25" required></textarea><br/><br/>
 					<h2 style="margin-bottom: -10px;">Last Name</h2><br/>
 					<textarea name="lname" rows="1" cols="25" required></textarea><br/><br/>
+					<h2 style="margin-bottom: -10px;">Profile Image (URL)</h2><br/>
+					<textarea name="image" rows="2" cols="25" required></textarea><br/><br/>
 					</select><br/>
 					<!--Buttons Row-->
 					<div class="row" style="padding-top: 70px;">
