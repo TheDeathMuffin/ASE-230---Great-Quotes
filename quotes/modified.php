@@ -5,6 +5,7 @@ session_start();
 <html lang="eng">
 	<?php
 		require('../csv_util.php');
+		//function used to process data from modify and modify information in the database
 		function combineFormData()
 		{
 			$quote = $_POST['quote'];

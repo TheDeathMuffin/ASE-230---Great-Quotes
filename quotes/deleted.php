@@ -4,6 +4,7 @@ session_start();
 <!DOCTYPE HTML>
 <html lang="eng">
 	<?php
+		//deletes specified row
 		require("csv_util.php");
 		deleteRow($_GET['quoteIndex'], 'quotes.csv');
 	?>
