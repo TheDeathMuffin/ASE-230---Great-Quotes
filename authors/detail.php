@@ -22,10 +22,12 @@ session_start();
 			<!--Top Bar-->
 			<div class="lb" style="height: 60px;">
 				<div class="butDivTwo" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="..\quotes\index.php">Switch to Quotes</a></div>
+				<!--Will display sign out button if user is logged in-->
 				<?php if(isset($_SESSION['logged']) && isset($_SESSION['logged_user'])) { ?>	
 				<div class="butDivTwo" style="width: 300px; height: 60px; float: left; background-color: red;"><a class="butTwo" href="../auth/signout.php">Sign Out</a></div>
 				<?php } ?>
 				<?php if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])) { ?>	
+				<!--Will display sign in button if user isn't logged in-->
 				<div class="butDivThree" style="width: 300px; height: 60px; float: left;"><a class="butTwo" href="../auth/signin.php">Sign In</a></div>
 				<?php } ?>
 			</div>
@@ -44,6 +46,7 @@ session_start();
 				<!--Buttons Row-->
 				<div class="row" style="padding-top: 30px;">
 					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="index.php">Home</a></div></div>
+					<!--Displays modify and delete buttons if someone is authenticated-->
 					<?php if(isset($_SESSION['logged']) && isset($_SESSION['logged_user'])){ ?>
 					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="modify.php?Index=<?= $_GET['Index']; ?>">Modify</a></div></div>
 					<div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="delete.php?Index=<?= $_GET['Index']; ?>">Delete</a></div></div>

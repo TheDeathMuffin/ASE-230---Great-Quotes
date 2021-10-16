@@ -31,7 +31,7 @@ if(count($_POST)>0){
     }
     $email = $_POST['email'];
     $password = $_POST['password'];
-
+    //checks if email is a valid email
     if(!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($password)<8){
         echo 'Please provide a valid email address and password';
         die();

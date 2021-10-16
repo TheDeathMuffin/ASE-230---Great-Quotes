@@ -75,8 +75,10 @@ if(count($_POST)>0){
 			echo "Password:". $_POST['password'];
 			$newRow = array();
 			$newRow[] = $_POST['email'];
+			//inputs an encrypted password into the database
 			$newRow[] = password_hash($_POST['password'], PASSWORD_BCRYPT);
 			createRow($newRow, 'users.csv');
+			//automatically logs the user into the website after they sign up
 			session_start();
 			$_SESSION['logged_user']=$_POST['email'];
             $_SESSION['logged']=true;
@@ -84,16 +86,6 @@ if(count($_POST)>0){
 		}
 		
 	}
-	#*NOTE: ADD ALL THESE AUTHENTICATION REQUIREMENTS
-	// check if the password contains at least 2 special characters
-	// check if the file containing banned users exists
-	// check if the email has not been banned
-	// check if the file containing users exists
-	// check if the email is in the database already
-	// encrypt password
-	// save the user in the database 
-	// show them a success message and redirect them to the sign in page
-
 };
 ?>
 				<form class="createForm" method="POST">
