@@ -7,7 +7,7 @@ if(!isset($_SESSION['logged']) || !isset($_SESSION['logged_user'])){
 <!DOCTYPE HTML>
 <html lang="eng">
 	<?php
-		require("csv_util.php");
+		require("../csv_util.php");
 	?>
 	<head>
 		<title>Great Quotes - Delete Confirmation</title>

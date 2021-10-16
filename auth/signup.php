@@ -1,3 +1,21 @@
+<!DOCTYPE HTML>
+<html lang="eng">
+    <head>
+		<title>Sign Up</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+		<link rel="stylesheet" href="../style.css">
+	</head>
+	<body>
+		<!--Body Container-->
+		<div style="height: 100%;">
+			<!--Top Bar-->
+			<div class="lb" style="height: 60px;"></div>
+			<!--Small Top Bar-->
+			<div class="lg" style="height: 5px;"></div>
+            <!--Quote Column-->
+			<div class="textColumn" style="min-height: 100%;">
+                <p class="textlb" style="font-size: 100px;">Sign Up</p>
 <?php
 require('../csv_util.php');
 //session_start();
@@ -60,7 +78,7 @@ if(count($_POST)>0){
 			$newRow[] = password_hash($_POST['password'], PASSWORD_BCRYPT);
 			createRow($newRow, 'users.csv');
 			session_start();
-			$_SESSION['logged_user']=$email;
+			$_SESSION['logged_user']=$_POST['email'];
             $_SESSION['logged']=true;
             header('location:../authors/index.php');
 		}
@@ -76,23 +94,27 @@ if(count($_POST)>0){
 	// save the user in the database 
 	// show them a success message and redirect them to the sign in page
 
-} else {
-	Echo "Please enter some data";
 };
-
-
-// improve the form
 ?>
-<form method="POST">
-	Email:
-	<input type="email" name="email" required="true" /> <br /><br />
-	Password:
-	<input type="password" name="password" required="true"/><br />Password must have at least 2 special characters and at least 8 characters<br /><br />
-	Confirm Password:
-	<input type="password" name="confirm_password" required="true"/><br />
-	
-	<input type="submit" value="submit" /> <br />
-	<a href="signin.php">Sign in</a><br />
-	<a href="..\quotes\index.php">Quotes</a><br />
-	<a href="..\authors\index.php">Authors</a><br />
-</form>
+				<form class="createForm" method="POST">
+					<h2 style="margin-bottom: -10px;">Email</h2><br/>
+                    <input style="margin-bottom: 15px;" type="email" name="email" /><br />
+                    <h2 style="margin-bottom: -10px;">Password</h2><br><h5 style="margin-top: -10px; margin-bottom: 10px;">(Password must have at least 2 special characters and at least 8 characters.)</h5>
+                    <input type="password" name="password" /><br/>
+					<h2 style="margin-top: 20px; margin-bottom: -10px;">Confirm Password</h2><br>
+					<input type="password" name="confirm_password" required="true"/><br /><br/>
+					<!--Buttons Row-->
+					<div class="row" style="padding-top: 30px;">
+                        <div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><input class="but lb" style="border: 0px;" type="submit" value="Sign Up"></div></div>
+                        <div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="..\authors\index.php">Back to Sign In</a></div></div>
+                        <div class="col-md-2 col-sm-5 col-xs-12"><div class="butDiv"><a class="but" href="..\authors\index.php">Cancel</a></div></div>
+                    </div>
+				</form>
+			</div>
+            <!--Small Footer Bar-->
+            <div class="lg" style="height: 5px;"></div>
+			<!--Footer Bar-->
+			<div class="lb" style="height: 30px;"></div>
+        </div>
+    </body>
+</html>
