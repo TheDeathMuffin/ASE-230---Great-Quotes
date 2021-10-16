@@ -1,5 +1,6 @@
 
 <?php
+//This whole file is just meant to stop users from accessing unauthorized pages via url links
 echo "You are not authorized to go to this webpage"
 ?>
 <!DOCTYPE HTML>
